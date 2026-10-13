@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'DM Sans', sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+}
+
+:root {
+  font-family: var(--font-sans);
+  color: #28352b;
+  background: #f7f5ee;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --paper: #f7f5ee;
+  --ink: #28352b;
+  --olive: #455744;
+  --moss: #70816b;
+  --muted: #73766c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #464feb;
+}
+
+tr th,
+tr td {
+  border: 1px solid #e6e6e6;
+}
+
+tr th {
+  background-color: #f5f5f5;
+}
+
+.hero-image {
+  background-color: #58645b;
+  background-image: url('https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=2400&q=90');
+  background-position: center 42%;
+  background-size: cover;
+}
+
+.paper-texture {
+  background-image: repeating-linear-gradient(0deg, transparent, transparent 3px, rgb(82 73 48 / 1.5%) 4px);
+}
+
+::selection {
+  color: white;
+  background: #70816b;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
