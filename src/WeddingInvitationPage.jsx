@@ -6,19 +6,7 @@ import { PhotoGallerySection, LoveStorySection, GiftGuideSection, GuestReminders
 
 function WeddingInvitationPage() {
   const [showInvitation, setShowInvitation] = useState(false)
-  const [invitation, setInvitation] = useState(defaultInvitation)
-
-  useEffect(() => {
-    const controller = new AbortController()
-    fetch('/api/invitation', { signal: controller.signal })
-      .then((response) => response.ok ? response.json() : Promise.reject(new Error('Could not load invitation settings.')))
-      .then(({ invitation: savedInvitation }) => setInvitation(savedInvitation))
-      .catch((error) => {
-        if (error.name !== 'AbortError') console.error(error)
-      })
-
-    return () => controller.abort()
-  }, [])
+  const invitation = defaultInvitation
 
   useEffect(() => {
     document.body.style.overflow = showInvitation ? '' : 'hidden'

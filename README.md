@@ -1,31 +1,23 @@
 # Christian & Ericka Wedding Invitation
 
-## Start locally
+## Run locally
 
 ```sh
 npm install
 npm run dev
 ```
 
-Open the Vite URL printed in the terminal. The admin editor is at `/admin` on that same origin.
-
 ## Edit the invitation
 
-On the first local visit to `/admin`, create a passcode with at least 8 characters. Later visits require that passcode before settings or photos can be changed. The server stores a salted passcode hash and keeps an authenticated session in an HTTP-only cookie.
+Update the `defaultInvitation` object in `src/weddingData.js`, then commit and deploy the changes. Add image files to `public/PhotoGallery/` and reference them with paths such as `/PhotoGallery/engagement.jpg`. Remote image URLs must use HTTPS.
 
-The editor updates names, dates and times, venue details and map links, schedule, dress code and palette, entourage, story, gift message, reminders, hero image, and gallery photos. Choose **Save all changes** to publish edits. Image uploads accept JPEG, PNG, and WebP up to 12 MB. Gallery and hero uploads are stored in `public/PhotoGallery`; invitation settings are stored in the ignored `data/invitation.json` file.
+This is a public-only static site. It does not include the admin editor, API, or in-site photo uploads. The ignored `data/invitation.json` file is not used by the Vercel deployment.
 
-Back up `data/` and `public/PhotoGallery/` to preserve invitation edits and uploaded images.
+## Deploy to Vercel
 
-## Production
+1. Push the project to a GitHub repository.
+2. In Vercel, choose **Add New → Project** and import the repository.
+3. Keep the Vite framework preset. The build command is `npm run build` and the output directory is `dist`; these are also set in `vercel.json`.
+4. Select **Deploy**. No environment variables or persistent disk are required.
 
-Build and start the Express server:
-
-```sh
-npm run build
-npm start
-```
-
-Set `NODE_ENV=production`, `PORT`, and a strong `ADMIN_PASSCODE` in the hosting environment before starting the server. Production does not allow first-time passcode setup from the public site. If the site is hosted on a different origin, set `PUBLIC_ORIGIN` to its exact origin, including the scheme.
-
-The host must provide persistent writable storage for `data/` and `public/PhotoGallery/`; ephemeral deployments will lose saved edits and uploads when restarted.
+After deployment, open the Vercel URL and check the invitation and its images. Future invitation or photo changes go live when committed and redeployed.
